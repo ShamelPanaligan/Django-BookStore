@@ -1,0 +1,65 @@
+{% extends 'shop/base.html' %}  {# Inherit layout from base template #}
+
+{% block title %}Your Cart{% endblock %}  {# Set the page title dynamically #}
+
+{% block content %}
+<div class="container">
+    <h1>Your Cart</h1>
+
+    {% if cart.items.all %}  {# Check if the cart has any items #}
+        <!-- Table to display cart items -->
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Book</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Subtotal</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <!-- Loop through each item in the cart -->
+                {% for item in cart.items.all %}
+                    <tr>
+                        <!-- Book title -->
+                        <td>{{ item.book.title }}</td>
+                        <!-- Book price -->
+                        <td>£{{ item.book.price }}</td>
+
+                        <!-- Quantity input form for updating cart -->
+                        <td>
+                            <form method="POST" action="{% url 'update_cart_quantity' item.id %}" class="d-inline">
+                                {% csrf_token %}  {# CSRF token for form security #}
+                                <input type="number" name="quantity" value="{{ item.quantity }}" min="1" style="width: 60px;">
+                                <button type="submit" class="btn btn-sm btn-outline-success">Update</button>
+                            </form>
+                        </td>
+
+                        <!-- Subtotal for this item -->
+                        <td>£{{ item.total_price }}</td>
+
+                        <!-- Link to remove item from cart -->
+                        <td>
+                            <a href="{% url 'remove_from_cart' item.id %}" class="btn btn-sm btn-danger">
+                                Remove
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Total price and checkout button -->
+        <div class="text-end">  
+            <h4>Total: £{{ cart.total_price }}</h4>
+            <a href="{% url 'checkout' %}" class="btn btn-success mt-2">Proceed to Checkout</a>
+        </div>
+    {% else %}
+    
+        <!-- Message when the cart is empty -->
+        <p>Your cart is empty. <a href="{% url 'books_list' %}">Browse books</a>.</p>
+    {% endif %}
+</div>
+{% endblock %}

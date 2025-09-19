@@ -1,0 +1,36 @@
+{% extends 'shop/base.html' %}
+{% load widget_tweaks %}  {# Load widget_tweaks to customize form field rendering (e.g., adding CSS classes) #}
+
+{% block content %}
+<div class="container my-5" style="max-width: 600px;">
+
+  <h2 class="mb-4">Checkout</h2>
+  
+  <!-- Checkout Form -->
+  <form method="post" novalidate>  {# 'novalidate' disables HTML5 validation to rely on Django's validation #}
+    {% csrf_token %}  {# Protect form from CSRF attacks #}
+    
+    <!-- Loop through each form field dynamically -->
+    {% for field in form %}
+      <div class="mb-3">
+        
+        <!-- Field label -->
+        <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+        
+        <!-- Render input with Bootstrap styling using widget_tweaks -->
+        {{ field|add_class:"form-control" }}
+        
+        <!-- Display validation errors, if any -->
+        {% if field.errors %}
+          <div class="text-danger small mt-1">
+            {{ field.errors|striptags }}
+          </div>
+        {% endif %}
+      </div>
+    {% endfor %}
+    
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary w-100">Place Order</button>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,22 @@
+# Ignore Python cache files
+*.pyc
+__pycache__/
+
+# Ignore SQLite database
+db.sqlite3
+
+# Ignore media and static folders (optional)
+media/
+static/
+
+# Ignore environment files (your secret keys)
+.env
+
+# Ignore IDE or editor folders
+.vscode/
+.idea/
+
+# Ignore Django migrations (optional)
+*/migrations/
+!*/migrations/__init__.py
+	

@@ -1,0 +1,100 @@
+{% extends 'shop/base.html' %}
+{% block title %}Help & Support{% endblock %}
+
+{% block content %}
+<div class="container my-5" style="max-width: 900px;">
+  <h1 class="mb-4 text-center">📖 Help & Support</h1>
+
+  <div class="accordion" id="helpAccordion">
+    
+    <!-- Account Help -->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingAccount">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAccount">
+          🔐 Account & Login Issues
+        </button>
+      </h2>
+      <div id="collapseAccount" class="accordion-collapse collapse show" data-bs-parent="#helpAccordion">
+        <div class="accordion-body">
+          <ul>
+            <li><strong>Forgot Password?</strong> Click “Forgot Password” on the login page to reset it via email.</li>
+            <li><strong>Can’t Log In?</strong> Make sure your email and password are correct. Still stuck? <a href="mailto:support@yourstore.com">Contact us</a>.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Orders -->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOrders">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOrders">
+          📦 Orders & Shipping
+        </button>
+      </h2>
+      <div id="collapseOrders" class="accordion-collapse collapse" data-bs-parent="#helpAccordion">
+        <div class="accordion-body">
+          <ul>
+            <li><strong>Where is my order?</strong> You’ll receive a confirmation email with tracking once your order ships.</li>
+            <li><strong>Can I cancel my order?</strong> Orders can be canceled within 1 hour of placement. Email us ASAP.</li>
+            <li><strong>Do you ship internationally?</strong> Yes! We ship to most countries. Shipping fees apply.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Payments -->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingPayments">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePayments">
+          💳 Payments
+        </button>
+      </h2>
+      <div id="collapsePayments" class="accordion-collapse collapse" data-bs-parent="#helpAccordion">
+        <div class="accordion-body">
+          <ul>
+            <li><strong>What payment methods do you accept?</strong> We accept Visa, MasterCard, American Express, and PayPal.</li>
+            <li><strong>Is my payment secure?</strong> Absolutely — all transactions are processed securely and encrypted.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Returns -->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingReturns">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseReturns">
+          🔄 Returns & Refunds
+        </button>
+      </h2>
+      <div id="collapseReturns" class="accordion-collapse collapse" data-bs-parent="#helpAccordion">
+        <div class="accordion-body">
+          <ul>
+            <li><strong>How do I return a book?</strong> Contact our support team within 14 days of delivery to initiate a return.</li>
+            <li><strong>When will I get my refund?</strong> Refunds are issued within 5–7 business days after we receive the item.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact -->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingContact">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseContact">
+          📬 Contact Us
+        </button>
+      </h2>
+      <div id="collapseContact" class="accordion-collapse collapse" data-bs-parent="#helpAccordion">
+        <div class="accordion-body">
+          <p>Still have questions? We're happy to help!</p>
+          <ul>
+            <li>Email: PaperNest@gmail.com</a></li>
+            <li>Phone: +44 7564 342844</li>
+            <li>Live Chat: Available 9am–5pm (Mon–Fri)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}
